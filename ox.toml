@@ -1,0 +1,7 @@
+[app]
+health = "/_zoo/health"
+
+# sqlx and redis in Cargo.toml do not imply services, so declare them.
+[services]
+postgres = {}
+redis = {}
