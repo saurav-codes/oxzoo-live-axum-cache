@@ -14,7 +14,7 @@ A Rust read-through cache on Axum 0.8: signed `GET /api/cache/{key}` answers fro
 
 ## ox features
 
-Detected: Rust toolchain, build, start. Declared in `ox.toml`: `[services] postgres` and `redis`, because ox does not infer services from Rust crates, and `[app] health`, which is also what keeps the detected start command (see the findings below).
+Detected: Rust toolchain, build, start. Declared in `ox.toml`: `[app] health` and `[services] postgres` and `redis`. Without an `ox.toml`, ox detects both services from `sqlx` and `redis` in `Cargo.toml` (since ox 438a55d6); with one, `[services]` is exactly what it lists.
 
 ## Routes
 
@@ -66,4 +66,4 @@ ox check . (manifest: ox.toml)
 Ready to deploy.
 ```
 
-Findings while getting there: with no `ox.toml` the check says "Ready to deploy." but nothing provides `DATABASE_URL` or `REDIS_URL`, so the app would exit at start. With `ox.toml` holding only `[services]`, the detected start command disappears and the check fails with "nothing to run"; adding `[app] health` brings it back.
+Findings while getting there: with no `ox.toml` the check says "Ready to deploy." but nothing provides `DATABASE_URL` or `REDIS_URL`, so the app would exit at start. With `ox.toml` holding only `[services]`, the detected start command disappears and the check fails with "nothing to run"; adding `[app] health` brings it back. Both are fixed: ox 438a55d6 detects the services and ox d89326bc keeps the detected start.
