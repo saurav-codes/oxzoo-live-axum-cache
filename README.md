@@ -1,6 +1,10 @@
 # axum-cache
 
-> **Role in the zoo:** project `axum-cache` of [oxzoo-live](https://github.com/saurav-codes/oxzoo-live-control/blob/main/zoo/README.md#projects), deployed with ox on server s4 at https://axum-cache.s4.zoo.sorv.dev. The contract it follows is [DESIGN.md](https://github.com/saurav-codes/oxzoo-live-control/blob/main/zoo/DESIGN.md).
+Deployed with [ox](https://deploywithox.com): deploy a repo to your own server with one command, no Docker. [Docs](https://deploywithox.com/docs) · [Guide for this stack](https://deploywithox.com/docs/guides/rust)
+
+**Live demo:** https://axum-cache.s4.zoo.sorv.dev
+
+> **Role in the zoo:** project `axum-cache` of [oxzoo-live](https://github.com/saurav-codes/oxzoo-live-control/blob/main/zoo/README.md#projects), deployed with [ox](https://deploywithox.com) on server s4 at https://axum-cache.s4.zoo.sorv.dev. The contract it follows is [DESIGN.md](https://github.com/saurav-codes/oxzoo-live-control/blob/main/zoo/DESIGN.md).
 
 A Rust read-through cache on Axum 0.8: signed `GET /api/cache/{key}` answers from Redis, else from Postgres, which refills Redis for 60 s. It is the `axum` leg of the `ssr-fanout` chain: sveltekit-ssr calls it server-side with `INTERNAL_TOKEN`.
 
